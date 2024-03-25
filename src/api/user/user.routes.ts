@@ -1,17 +1,9 @@
-import { Router, Request, Response } from 'express';
-import User from './user.model';
+import { Router } from 'express';
+import * as UserHandler from './user.handler';
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response<User[]>) => {
-  res.json([
-    {
-      id: '123',
-      email: 'talha@gmail.com',
-      name: 'Talha',
-      password: '12345666',
-    },
-  ]);
-});
+router.get('/', UserHandler.findAllusers);
+router.post('/', UserHandler.createUsers);
 
 export default router;
